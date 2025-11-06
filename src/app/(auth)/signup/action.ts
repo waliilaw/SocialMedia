@@ -68,13 +68,15 @@ export async function signUp(
           passwordHash,
         },
       });
-      await streamServerClient.upsertUsers([
-        {
-          id: userId,
-          username,
-          name: username,
-        },
-      ]);
+      if (streamServerClient) {
+        await streamServerClient.upsertUsers([
+          {
+            id: userId,
+            username,
+            name: username,
+          },
+        ]);
+      }
     });
 
     // Oturum oluşturma

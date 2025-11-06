@@ -23,7 +23,9 @@ export default async function MenuBar({ className }: MenuBarProps) {
         read: false,
       },
     }),
-    (await streamServerClient.getUnreadCount(user.id)).total_unread_count,
+    streamServerClient 
+      ? (await streamServerClient.getUnreadCount(user.id)).total_unread_count
+      : 0,
   ]);
 
   return (

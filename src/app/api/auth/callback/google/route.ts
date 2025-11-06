@@ -75,12 +75,14 @@ export async function GET(req: NextRequest) {
         },
       });
 
-      await streamServerClient.upsertUser({
-        id: userId,
-        username,
-        displayName: googleUser.name,
-        name: username,
-      });
+      if (streamServerClient) {
+        await streamServerClient.upsertUser({
+          id: userId,
+          username,
+          displayName: googleUser.name,
+          name: username,
+        });
+      }
     });
 
     // Now, create a session and set the session cookie.

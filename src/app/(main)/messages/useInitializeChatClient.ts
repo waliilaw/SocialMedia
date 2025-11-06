@@ -8,7 +8,18 @@ export default function useInitializeChatClient() {
   const [chatClient, setChatClient] = useState<StreamChat | null>(null);
 
   useEffect(() => {
-    const client = StreamChat.getInstance(process.env.NEXT_PUBLIC_STREAM_KEY!);
+    // Only initialize on client side
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const streamKey = process.env.NEXT_PUBLIC_STREAM_KEY;
+    if (!streamKey) {
+      console.error("NEXT_PUBLIC_STREAM_KEY is not set");
+      return;
+    }
+
+    const client = StreamChat.getInstance(streamKey);
     client
       .connectUser(
         {

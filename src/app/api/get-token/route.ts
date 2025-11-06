@@ -10,6 +10,10 @@ export async function GET() {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    if (!streamServerClient) {
+      return Response.json({ error: "Stream Chat not configured" }, { status: 500 });
+    }
+
     const expirationTime = Math.floor(Date.now() / 1000) + 60 * 60; // 1 hour in seconds
     const issuedAt = Math.floor(Date.now() / 1000) - 60;
     const token = streamServerClient.createToken(

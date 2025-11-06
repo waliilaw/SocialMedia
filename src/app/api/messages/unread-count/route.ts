@@ -9,6 +9,9 @@ export async function GET() {
     if (!user) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
+    if (!streamServerClient) {
+      return Response.json({ unreadCount: 0 } as MessageCountInfo);
+    }
     const { total_unread_count } = await streamServerClient.getUnreadCount(
       user.id,
     );

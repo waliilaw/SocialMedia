@@ -34,12 +34,14 @@ export const ourFileRouter = {
           where: { id: metadata.user.id },
           data: { avatarUrl: newAvatarUrl },
         }),
-        streamServerClient.partialUpdateUser({
-          id: metadata.user.id,
-          set: {
-            image: newAvatarUrl,
-          },
-        }),
+        streamServerClient 
+          ? streamServerClient.partialUpdateUser({
+              id: metadata.user.id,
+              set: {
+                image: newAvatarUrl,
+              },
+            })
+          : Promise.resolve(),
       ]);
 
       console.log("Upload complete for userId:", metadata.user.id);
