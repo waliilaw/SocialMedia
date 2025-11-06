@@ -3,7 +3,7 @@
 A modern social networking application built with Next.js, Prisma, and TypeScript — developed as a **DBMS group project** for college.
 
 ## Team Members
-- **Abdul Wali**
+- **Wali**
 - **Sumit**
 - **Vanshika**
 
@@ -25,6 +25,9 @@ A full-stack social media platform demonstrating database design, relationships,
 - Node.js 16+ 
 - PostgreSQL database
 - npm or yarn
+
+## Screenshot 
+<img width="224" height="519" alt="Screenshot 2025-11-06 at 4 42 44 PM" src="https://github.com/user-attachments/assets/73e3a490-a940-4ee0-a783-051c55c88240" />
 
 ### Installation
 
